@@ -1,7 +1,7 @@
 {
-  "name": "api",
+  "name": "arena",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "apps/api/src",
+  "sourceRoot": "apps/arena/src",
   "projectType": "application",
   "targets": {
     "build": {

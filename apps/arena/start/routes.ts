@@ -7,10 +7,16 @@
 |
 */
 
+import IndexController from "#controllers/index_controller";
 import router from "@adonisjs/core/services/router";
 
-router.get("/", async () => {
+router.get("/api/*", async ({ request }) => {
   return {
-    hello: "world",
+    message: "Route Not Found",
+    status: 404,
+    method: request.method(),
+    url: request.url(),
   };
 });
+
+router.get("/*", [IndexController, "index"]);
