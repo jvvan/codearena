@@ -7,13 +7,18 @@
 |
 */
 
+import AuthController from "#controllers/auth_controller";
 import IndexController from "#controllers/index_controller";
 import router from "@adonisjs/core/services/router";
+
+router.get("/api/auth/me", [AuthController, "me"]);
+router.post("/api/auth/register", [AuthController, "register"]);
+router.post("/api/auth/login", [AuthController, "login"]);
+router.post("/api/auth/logout", [AuthController, "logout"]);
 
 router.get("/api/*", async ({ request }) => {
   return {
     message: "Route Not Found",
-    status: 404,
     method: request.method(),
     url: request.url(),
   };

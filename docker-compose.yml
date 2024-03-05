@@ -1,0 +1,18 @@
+version: '3.1'
+
+services:
+  db:
+    image: mariadb:11.3
+    restart: always
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: arena
+      MYSQL_DATABASE: arena
+      MYSQL_USER: arena
+      MYSQL_PASSWORD: arena
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
