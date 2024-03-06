@@ -1,21 +1,37 @@
 import server from "@adonisjs/core/services/server";
 import redis from "@adonisjs/redis/services/main";
-import { Server } from "socket.io";
+import { Namespace, Server } from "socket.io";
 import { createAdapter } from "@socket.io/redis-adapter";
 import {
-  ClientToServerEvents,
-  InterServerEvents,
-  ServerToClientEvents,
-  SocketData,
-} from "types/socket.js";
+  UsersClientToServerEvents,
+  UsersInterServerEvents,
+  UsersServerToClientEvents,
+  UsersSocketData,
+} from "types/socket/users.js";
+import {
+  RunnersClientToServerEvents,
+  RunnersInterServerEvents,
+  RunnersServerToClientEvents,
+  RunnersSocketData,
+} from "types/socket/runner.js";
 
 class Ws {
-  public io: Server<
-    ClientToServerEvents,
-    ServerToClientEvents,
-    InterServerEvents,
-    SocketData
+  public io: Server;
+
+  public users: Namespace<
+    UsersClientToServerEvents,
+    UsersServerToClientEvents,
+    UsersInterServerEvents,
+    UsersSocketData
   >;
+
+  public runners: Namespace<
+    RunnersClientToServerEvents,
+    RunnersServerToClientEvents,
+    RunnersInterServerEvents,
+    RunnersSocketData
+  >;
+
   private booted = false;
 
   public boot() {
@@ -28,8 +44,12 @@ class Ws {
         origin: "*",
       },
     });
+
     const ioredis = redis.connection().ioConnection;
     this.io.adapter(createAdapter(ioredis, ioredis));
+
+    this.users = this.io.of("/users");
+    this.runners = this.io.of("/runners");
   }
 }
 
