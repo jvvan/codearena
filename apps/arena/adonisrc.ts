@@ -38,6 +38,8 @@ export default defineConfig({
     () => import("@adonisjs/auth/auth_provider"),
     () => import("@adonisjs/vite/vite_provider"),
     () => import("@adonisjs/core/providers/edge_provider"),
+    () => import("#providers/socket_provider"),
+    () => import("@adonisjs/redis/redis_provider"),
   ],
 
   /*

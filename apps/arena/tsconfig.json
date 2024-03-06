@@ -12,7 +12,7 @@
     "strictNullChecks": true,
     "allowSyntheticDefaultImports": true,
     "forceConsistentCasingInFileNames": true,
-    "strictPropertyInitialization": true,
+    "strictPropertyInitialization": false,
     "experimentalDecorators": true,
     "noImplicitAny": true,
     "strictBindCallApply": true,

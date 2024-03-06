@@ -15,6 +15,7 @@ router.get("/api/auth/me", [AuthController, "me"]);
 router.post("/api/auth/register", [AuthController, "register"]);
 router.post("/api/auth/login", [AuthController, "login"]);
 router.post("/api/auth/logout", [AuthController, "logout"]);
+router.post("/api/auth/socket-token", [AuthController, "socketToken"]);
 
 router.get("/api/*", async ({ request }) => {
   return {

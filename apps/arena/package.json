@@ -57,8 +57,10 @@
     "@adonisjs/core": "^6.2.2",
     "@adonisjs/cors": "^2.2.1",
     "@adonisjs/lucid": "^20.1.0",
+    "@adonisjs/redis": "^8.0.1",
     "@adonisjs/session": "^7.1.1",
     "@adonisjs/vite": "^2.0.2",
+    "@socket.io/redis-adapter": "^8.2.1",
     "@vinejs/vine": "^1.7.1",
     "@vitejs/plugin-react": "^4.2.1",
     "better-sqlite3": "^9.4.3",
@@ -68,7 +70,8 @@
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-refresh": "^0.14.0",
-    "reflect-metadata": "^0.2.1"
+    "reflect-metadata": "^0.2.1",
+    "socket.io": "^4.7.4"
   },
   "eslintConfig": {
     "extends": "@adonisjs/eslint-config/app"

@@ -1,6 +1,8 @@
 import User from "#models/user";
 import { authLoginValidator, authRegisterValidator } from "#validators/auth";
 import type { HttpContext } from "@adonisjs/core/http";
+import encryption from "@adonisjs/core/services/encryption";
+import { EncryptedTokenPayload } from "types/auth.js";
 
 export default class AuthController {
   public async me({ auth }: HttpContext) {
@@ -32,5 +34,21 @@ export default class AuthController {
 
   public async logout({ auth }: HttpContext) {
     await auth.use("web").logout();
+  }
+
+  public async socketToken({ auth }: HttpContext) {
+    await auth.authenticate();
+    const user = await auth.getUserOrFail();
+
+    const data: EncryptedTokenPayload = {
+      userId: user.id,
+      purpose: "socket.io",
+    };
+
+    const token = encryption.encrypt(data, "3 minutes");
+
+    return {
+      token,
+    };
   }
 }
