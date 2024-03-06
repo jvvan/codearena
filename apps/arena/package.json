@@ -60,6 +60,7 @@
     "@adonisjs/redis": "^8.0.1",
     "@adonisjs/session": "^7.1.1",
     "@adonisjs/vite": "^2.0.2",
+    "@socket.io/admin-ui": "^0.5.1",
     "@socket.io/redis-adapter": "^8.2.1",
     "@vinejs/vine": "^1.7.1",
     "@vitejs/plugin-react": "^4.2.1",

@@ -26,6 +26,9 @@ dependencies:
   '@adonisjs/vite':
     specifier: ^2.0.2
     version: 2.0.2(@adonisjs/core@6.3.1)(edge.js@6.0.1)(vite@5.1.4)
+  '@socket.io/admin-ui':
+    specifier: ^0.5.1
+    version: 0.5.1(socket.io@4.7.4)
   '@socket.io/redis-adapter':
     specifier: ^8.2.1
     version: 8.2.1(socket.io-adapter@2.5.4)
@@ -1458,6 +1461,19 @@ packages:
     resolution: {integrity: sha512-yM/IGPkVnYGblhDosFBwq0ZGdnVSBkNV4onUtipGMOjZd4kB6GAu3ys91aftSbyMHh6A2GPdt+KDI5NoWP63MQ==}
     engines: {node: '>=16'}
 
+  /@socket.io/admin-ui@0.5.1(socket.io@4.7.4):
+    resolution: {integrity: sha512-1dlGL2FGm6T+uL1e6iDvbo2eCINwvW7iVbjIblwh5kPPRM1SP8lmZrbFZf4QNJ/cqQ+JLcx49eXGM9WAB4TK7w==}
+    peerDependencies:
+      socket.io: '>=3.1.0'
+    dependencies:
+      '@types/bcryptjs': 2.4.6
+      bcryptjs: 2.4.3
+      debug: 4.3.4
+      socket.io: 4.7.4
+    transitivePeerDependencies:
+      - supports-color
+    dev: false
+
   /@socket.io/component-emitter@3.1.0:
     resolution: {integrity: sha512-+9jVqKhRSpsc591z5vX+X5Yyw+he/HCB4iQ/RYxw35CEPaY1gnsNE43nf9n9AaYjAQrTiI/mOwKUKdUs9vf7Xg==}
     dev: false
@@ -1653,6 +1669,10 @@ packages:
     resolution: {integrity: sha512-WXCyOcRtH37HAUkpXhUduaxdm82b4GSlyTqajXviN4EfiuPgNYR109xMCKvpl6zPIpua0DGlMEDCq+g8EdoheQ==}
     dependencies:
       '@babel/types': 7.24.0
+    dev: false
+
+  /@types/bcryptjs@2.4.6:
+    resolution: {integrity: sha512-9xlo6R2qDs5uixm0bcIqCeMCE6HiQsIyel9KQySStiyqNl2tnj2mP3DX1Nf56MD6KMenNNlBBsy3LJ7gUEQPXQ==}
     dev: false
 
   /@types/bytes@3.1.4:
@@ -2113,6 +2133,10 @@ packages:
     engines: {node: '>= 0.8'}
     dependencies:
       safe-buffer: 5.1.2
+    dev: false
+
+  /bcryptjs@2.4.3:
+    resolution: {integrity: sha512-V/Hy/X9Vt7f3BbPJEi8BdVFMByHi+jNXrYkW3huaybV/kQ0KJg0Y6PkEMbn+zeT+i+SiKZ/HMqJGIIt4LZDqNQ==}
     dev: false
 
   /better-sqlite3@9.4.3:

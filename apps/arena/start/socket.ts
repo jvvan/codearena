@@ -1,6 +1,9 @@
 import Ws from "#services/Ws";
+import app from "@adonisjs/core/services/app";
 
 Ws.boot();
 
-import "../socket/users/index.js";
-import "../socket/runners/index.js";
+app.booted(async () => {
+  await import("../socket/users/index.js");
+  await import("../socket/runners/index.js");
+});

@@ -14,6 +14,9 @@ import {
   RunnersServerToClientEvents,
   RunnersSocketData,
 } from "types/socket/runner.js";
+import { RedisStore, instrument } from "@socket.io/admin-ui";
+import app from "@adonisjs/core/services/app";
+import { randomUUID } from "crypto";
 
 class Ws {
   public io: Server;
@@ -46,7 +49,18 @@ class Ws {
     });
 
     const ioredis = redis.connection().ioConnection;
-    this.io.adapter(createAdapter(ioredis, ioredis));
+    this.io.adapter(createAdapter(ioredis.duplicate(), ioredis.duplicate()));
+
+    // Only add admin ui in development, for now
+    if (app.inDev) {
+      instrument(this.io, {
+        serverId: `arena-${randomUUID()}`,
+        auth: false,
+        mode: app.inProduction ? "production" : "development",
+        namespaceName: "socket-admin",
+        store: new RedisStore(ioredis.duplicate()),
+      });
+    }
 
     this.users = this.io.of("/users");
     this.runners = this.io.of("/runners");
