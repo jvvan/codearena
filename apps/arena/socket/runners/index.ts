@@ -2,14 +2,16 @@ import Runner from "#models/runner";
 import Ws from "#services/Ws";
 
 Ws.runners.use(async (socket, next) => {
-  const token =
+  const auth =
     socket.handshake.auth.token || socket.handshake.headers.authorization;
-  if (!token) {
+  if (!auth) {
     return next(new Error("Unauthorized"));
   }
 
-  const runner = await Runner.findBy("token", token);
-  if (!runner) {
+  const [id, token] = auth.split(":");
+
+  const runner = await Runner.find(id);
+  if (!runner || runner.token !== token) {
     return next(new Error("Unauthorized"));
   }
 
