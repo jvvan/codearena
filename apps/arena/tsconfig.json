@@ -3,7 +3,7 @@
     "target": "ESNext",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    "lib": ["ESNext"],
+    "lib": ["ESNext", "DOM"],
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "isolatedModules": true,
@@ -26,6 +26,7 @@
     "baseUrl": ".",
     "rootDir": "./",
     "outDir": "./build",
+    "jsx": "react-jsx",
     "paths": {
       "#controllers/*": ["./app/controllers/*.js"],
       "#exceptions/*": ["./app/exceptions/*.js"],

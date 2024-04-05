@@ -4,8 +4,8 @@ import User from "./user.js";
 import type { BelongsTo } from "@adonisjs/lucid/types/relations";
 
 export default class Runner extends BaseModel {
-  static accessibleBy = scope((query, user: User) => {
-    if (user.admin) {
+  static accessibleBy = scope((query, user: User, owned = false) => {
+    if (user.admin && !owned) {
       return;
     }
 

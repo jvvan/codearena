@@ -9,6 +9,10 @@
   },
   "author": "",
   "license": "ISC",
+  "imports": {
+    "#services/*": "./services/*.js",
+    "#config/*": "./config/*.js"
+  },
   "dependencies": {
     "@adonisjs/config": "^5.0.1",
     "@adonisjs/env": "^5.0.1"

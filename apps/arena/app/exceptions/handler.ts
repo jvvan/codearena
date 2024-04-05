@@ -16,7 +16,7 @@ export default class HttpExceptionHandler extends ExceptionHandler {
   async handle(error: unknown, ctx: HttpContext) {
     if (error instanceof Exception) {
       return ctx.response.status(error.status).send({
-        name: error.name,
+        code: error.code,
         message: error.message,
       });
     }

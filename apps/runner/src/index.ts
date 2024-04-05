@@ -1,3 +1,9 @@
-import config from "./services/config.js";
+import socket from "#services/socket";
 
-config.get("runner.id");
+async function bootstrap() {
+  socket.on("connected", (data) => {
+    console.log(data);
+  });
+}
+
+bootstrap();

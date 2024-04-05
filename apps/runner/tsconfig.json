@@ -3,7 +3,6 @@
     "target": "ESNext",
     "module": "NodeNext",
     "moduleResolution": "NodeNext",
-    "lib": ["ESNext"],
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "isolatedModules": true,
@@ -24,7 +23,11 @@
     "sourceMap": true,
     "emitDecoratorMetadata": true,
     "baseUrl": ".",
-    "rootDir": "./"
+    "rootDir": "./",
+    "paths": {
+      "#services/*": ["./src/services/*.js"],
+      "#config/*": ["./src/config/*.js"]
+    }
   },
   "include": ["src/**/*.ts"]
 }

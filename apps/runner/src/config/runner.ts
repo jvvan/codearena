@@ -1,4 +1,4 @@
-import env from "src/services/env.js";
+import env from "#services/env";
 
 export default {
   id: env.get("RUNNER_ID"),
