@@ -22,11 +22,9 @@
     "declaration": false,
     "sourceMap": true,
     "emitDecoratorMetadata": true,
-    "baseUrl": ".",
-    "rootDir": "./",
     "paths": {
-      "#services/*": ["./src/services/*.js"],
-      "#config/*": ["./src/config/*.js"]
+      "#config/*": ["./src/config/*"],
+      "#services/*": ["./src/services/*"]
     }
   },
   "include": ["src/**/*.ts"]

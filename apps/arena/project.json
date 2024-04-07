@@ -10,7 +10,7 @@
         "script": "build"
       }
     },
-    "serve": {
+    "start": {
       "executor": "nx:run-script",
       "options": {
         "script": "dev"

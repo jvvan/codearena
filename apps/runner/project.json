@@ -10,11 +10,11 @@
       "defaultConfiguration": "production",
       "options": {
         "platform": "node",
-        "outputPath": "dist/apps/runner",
+        "outputPath": "apps/runner/dist",
         "bundle": false,
         "main": "apps/runner/src/index.ts",
         "tsConfig": "apps/runner/tsconfig.json",
-        "generatePackageJson": true,
+        "generatePackageJson": false,
         "esbuildOptions": {
           "sourcemap": true,
           "outExtension": {
@@ -24,18 +24,10 @@
       },
       "configurations": {
         "development": {},
-        "production": {
-          "generateLockfile": true,
-          "esbuildOptions": {
-            "sourcemap": false,
-            "outExtension": {
-              ".js": ".js"
-            }
-          }
-        }
+        "production": {}
       }
     },
-    "serve": {
+    "start": {
       "executor": "@nx/js:node",
       "defaultConfiguration": "development",
       "options": {
