@@ -3,8 +3,8 @@ import { withAuthFinder } from "@adonisjs/auth";
 import hash from "@adonisjs/core/services/hash";
 import { compose } from "@adonisjs/core/helpers";
 import { BaseModel, column, hasMany } from "@adonisjs/lucid/orm";
-import Runner from "./runner.js";
 import type { HasMany } from "@adonisjs/lucid/types/relations";
+import Runner from "#app/runners/models/runner";
 
 const AuthFinder = withAuthFinder(() => hash.use("scrypt"), {
   uids: ["username", "email"],

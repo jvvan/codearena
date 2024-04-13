@@ -7,11 +7,11 @@
 |
 */
 
-import AuthController from "#controllers/api/auth_controller";
-import RunnersController from "#controllers/api/runners_controller";
-import IndexController from "#controllers/index_controller";
 import router from "@adonisjs/core/services/router";
 import { middleware } from "./kernel.js";
+import AuthController from "#app/auth/controllers/auth_controller";
+import RunnersController from "#app/runners/controllers/runners_controller";
+import IndexController from "#app/core/controllers/index_controller";
 
 router.get("/api/auth/me", [AuthController, "me"]);
 router.post("/api/auth/register", [AuthController, "register"]);

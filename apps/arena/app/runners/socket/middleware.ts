@@ -1,6 +1,5 @@
-import Runner from "#models/runner";
-import Ws from "#services/Ws";
-import logger from "@adonisjs/core/services/logger";
+import Ws from "#app/core/services/Ws";
+import Runner from "../models/runner.js";
 
 Ws.runners.use(async (socket, next) => {
   const id = socket.handshake.auth.id || socket.handshake.headers.id;
@@ -18,9 +17,4 @@ Ws.runners.use(async (socket, next) => {
   socket.data.runner = runner;
 
   next();
-});
-
-Ws.runners.on("connection", (socket) => {
-  logger.info("Runner connected: %s [%s]", socket.data.runner.id, socket.id);
-  socket.emit("connected", socket.data.runner);
 });

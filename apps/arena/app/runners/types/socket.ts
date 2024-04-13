@@ -1,4 +1,4 @@
-import Runner from "#models/runner";
+import Runner from "../models/runner.js";
 
 export interface RunnersSocketData {
   runner: Runner;

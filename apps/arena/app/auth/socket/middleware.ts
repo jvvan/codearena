@@ -1,7 +1,7 @@
-import User from "#models/user";
-import Ws from "#services/Ws";
+import Ws from "#app/core/services/Ws";
 import encryption from "@adonisjs/core/services/encryption";
-import { EncryptedTokenPayload } from "types/auth.js";
+import { EncryptedTokenPayload } from "../types/token.js";
+import User from "../models/user.js";
 
 Ws.users.use(async (socket, next) => {
   const token =
@@ -28,8 +28,4 @@ Ws.users.use(async (socket, next) => {
   socket.data.user = user;
 
   next();
-});
-
-Ws.users.on("connection", (socket) => {
-  socket.emit("connected", socket.data.user);
 });

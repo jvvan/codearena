@@ -7,16 +7,16 @@ import {
   UsersInterServerEvents,
   UsersServerToClientEvents,
   UsersSocketData,
-} from "types/socket/users.js";
+} from "#app/auth/types/socket";
 import {
   RunnersClientToServerEvents,
   RunnersInterServerEvents,
   RunnersServerToClientEvents,
   RunnersSocketData,
-} from "types/socket/runner.js";
+} from "#app/runners/types/socket";
 import { RedisStore, instrument } from "@socket.io/admin-ui";
 import app from "@adonisjs/core/services/app";
-import { randomUUID } from "crypto";
+import { randomUUID } from "node:crypto";
 
 class Ws {
   public io: Server;

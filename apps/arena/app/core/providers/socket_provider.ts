@@ -8,7 +8,7 @@ export default class SocketProvider {
    */
   async ready() {
     if (this.app.getEnvironment() === "web") {
-      await import("../start/socket.js");
+      await import("#start/socket");
     }
   }
 }

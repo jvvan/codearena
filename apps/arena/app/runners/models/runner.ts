@@ -1,7 +1,7 @@
 import { DateTime } from "luxon";
 import { BaseModel, belongsTo, column, scope } from "@adonisjs/lucid/orm";
-import User from "./user.js";
 import type { BelongsTo } from "@adonisjs/lucid/types/relations";
+import User from "#app/auth/models/user";
 
 export default class Runner extends BaseModel {
   static accessibleBy = scope((query, user: User, owned = false) => {

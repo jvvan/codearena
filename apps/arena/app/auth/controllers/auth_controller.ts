@@ -1,10 +1,15 @@
-import User from "#models/user";
-import { authLoginValidator, authRegisterValidator } from "#validators/auth";
+import { inject } from "@adonisjs/core";
 import type { HttpContext } from "@adonisjs/core/http";
-import encryption from "@adonisjs/core/services/encryption";
-import { EncryptedTokenPayload } from "types/auth.js";
+import { AuthService } from "../services/auth_service.js";
+import {
+  authLoginValidator,
+  authRegisterValidator,
+} from "../validators/auth.js";
 
+@inject()
 export default class AuthController {
+  public constructor(private authService: AuthService) {}
+
   public async me({ auth }: HttpContext) {
     await auth.authenticate();
     return auth.use("web").getUserOrFail();
@@ -13,7 +18,7 @@ export default class AuthController {
   public async register({ request }: HttpContext) {
     const payload = await request.validateUsing(authRegisterValidator);
 
-    await User.create(payload);
+    await this.authService.register(payload);
 
     return {
       message: "User registered successfully",
@@ -25,7 +30,7 @@ export default class AuthController {
       authLoginValidator
     );
 
-    const user = await User.verifyCredentials(username, password);
+    const user = await this.authService.attempt(username, password);
 
     await auth.use("web").login(user);
 
@@ -40,12 +45,7 @@ export default class AuthController {
     await auth.authenticate();
     const user = await auth.getUserOrFail();
 
-    const data: EncryptedTokenPayload = {
-      userId: user.id,
-      purpose: "socket.io",
-    };
-
-    const token = encryption.encrypt(data, "3 minutes");
+    const token = await this.authService.createSocketToken(user);
 
     return {
       token,
