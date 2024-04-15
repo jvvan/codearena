@@ -7,7 +7,7 @@ import RunnerLimitExceededException from "../exceptions/runner_limit_exceeded_ex
 import stringHelpers from "@adonisjs/core/helpers/string";
 
 export class RunnerService {
-  public async findForUser(user: User, owned: boolean = false) {
+  public async findForUser(user: User, owned = false) {
     return Runner.query().withScopes((scopes) =>
       scopes.accessibleBy(user, owned)
     );
