@@ -12,6 +12,7 @@ import { middleware } from "./kernel.js";
 import AuthController from "#app/auth/controllers/auth_controller";
 import RunnersController from "#app/runners/controllers/runners_controller";
 import IndexController from "#app/core/controllers/index_controller";
+import LanguagesController from "#app/tasks/controllers/languages_controller";
 
 router.get("/api/auth/me", [AuthController, "me"]);
 router.post("/api/auth/register", [AuthController, "register"]);
@@ -26,6 +27,8 @@ router
     router.post("/api/runners", [RunnersController, "store"]);
   })
   .middleware(middleware.auth());
+
+router.get("/api/languages", [LanguagesController, "index"]);
 
 router.get("/api/*", async ({ request }) => {
   return {
