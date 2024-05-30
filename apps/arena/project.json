@@ -7,7 +7,7 @@
     "install-deps": {
       "executor": "nx:run-commands",
       "options": {
-        "commands": ["cd apps/arena && npm install"]
+        "commands": ["cd apps/arena && pnpm install"]
       }
     },
     "build": {
