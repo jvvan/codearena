@@ -18,6 +18,19 @@ services:
     restart: always
     ports:
       - "6379:6379"
+  minio:
+    image: minio/minio
+    restart: always
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    environment:
+      MINIO_ACCESS_KEY: codearena
+      MINIO_SECRET_KEY: codearena
+    volumes:
+      - minio_data:/data
+    command: server --console-address ":9001" /data
 
 volumes:
   db_data:
+  minio_data:

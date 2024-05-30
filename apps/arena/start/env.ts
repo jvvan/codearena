@@ -36,6 +36,23 @@ export default await Env.create(new URL("../", import.meta.url), {
   DB_PASSWORD: Env.schema.string.optional(),
   DB_DATABASE: Env.schema.string(),
 
+  /*
+  |----------------------------------------------------------
+  | Variables for configuring redis connection
+  |----------------------------------------------------------
+  */
   REDIS_HOST: Env.schema.string({ format: "host" }),
   REDIS_PORT: Env.schema.number(),
+
+  /*
+  |----------------------------------------------------------
+  | Variables for configuring drive
+  |----------------------------------------------------------
+  */
+  DRIVE_DEFAULT: Env.schema.enum(["s3"] as const),
+  DRIVE_S3_BUCKET: Env.schema.string(),
+  DRIVE_S3_REGION: Env.schema.string(),
+  DRIVE_S3_ACCESS_KEY_ID: Env.schema.string(),
+  DRIVE_S3_SECRET_ACCESS_KEY: Env.schema.string(),
+  DRIVE_S3_FORCE_PATH_STYLE: Env.schema.boolean(),
 });
