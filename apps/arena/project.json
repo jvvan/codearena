@@ -4,8 +4,15 @@
   "sourceRoot": "apps/arena/src",
   "projectType": "application",
   "targets": {
+    "install-deps": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": ["pnpm install"]
+      }
+    },
     "build": {
       "executor": "nx:run-script",
+      "dependsOn": ["install-deps"],
       "options": {
         "script": "build"
       }
