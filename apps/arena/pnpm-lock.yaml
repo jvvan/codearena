@@ -32,6 +32,9 @@ dependencies:
   '@aws-sdk/s3-request-presigner':
     specifier: ^3.583.0
     version: 3.583.0
+  '@sapphire/snowflake':
+    specifier: ^3.5.3
+    version: 3.5.3
   '@socket.io/admin-ui':
     specifier: ^0.5.1
     version: 0.5.1(socket.io@4.7.5)
@@ -2148,6 +2151,11 @@ packages:
     os: [win32]
     requiresBuild: true
     optional: true
+
+  /@sapphire/snowflake@3.5.3:
+    resolution: {integrity: sha512-jjmJywLAFoWeBi1W7994zZyiNWPIiqRRNAmSERxyg93xRGzNYvGjlZ0gR6x0F4gPRi2+0O6S71kOZYyr3cxaIQ==}
+    engines: {node: '>=v14.0.0', npm: '>=7.0.0'}
+    dev: false
 
   /@sinclair/typebox@0.27.8:
     resolution: {integrity: sha512-+Fj43pSMwJs4KRrH/938Uf+uAELIgVBmQzg/q1YG10djyfA3TnrU8N8XzqCh/okZdszqBQTZf96idMfE5lnwTA==}
