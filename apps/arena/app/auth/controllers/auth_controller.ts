@@ -26,8 +26,9 @@ export default class AuthController {
   }
 
   public async login({ auth, request }: HttpContext) {
-    const { username, password } =
-      await request.validateUsing(authLoginValidator);
+    const { username, password } = await request.validateUsing(
+      authLoginValidator
+    );
 
     const user = await this.authService.attempt(username, password);
 
