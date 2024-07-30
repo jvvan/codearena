@@ -9,7 +9,7 @@
 |
 */
 
-import { Env } from "@adonisjs/core/env"
+import { Env } from "@adonisjs/core/env";
 
 export default await Env.create(new URL("../", import.meta.url), {
   NODE_ENV: Env.schema.enum(["development", "production", "test"] as const),
@@ -61,5 +61,5 @@ export default await Env.create(new URL("../", import.meta.url), {
   | Variables for configuring the lock package
   |----------------------------------------------------------
   */
-  LOCK_STORE: Env.schema.enum(['redis', 'memory'] as const)
-})
+  LOCK_STORE: Env.schema.enum(["redis", "memory"] as const),
+});
