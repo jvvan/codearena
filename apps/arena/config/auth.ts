@@ -1,6 +1,7 @@
 import { defineConfig } from "@adonisjs/auth";
 import { InferAuthEvents, Authenticators } from "@adonisjs/auth/types";
 import { sessionGuard, sessionUserProvider } from "@adonisjs/auth/session";
+import { RunnerGuard } from "#app/auth/guards/runner_guard";
 
 const authConfig = defineConfig({
   default: "web",
@@ -11,6 +12,9 @@ const authConfig = defineConfig({
         model: () => import("#app/auth/models/user"),
       }),
     }),
+    runner: (ctx) => {
+      return new RunnerGuard(ctx);
+    },
   },
 });
 

@@ -1,6 +1,8 @@
 import app from "@adonisjs/core/services/app";
 import { HttpContext, ExceptionHandler } from "@adonisjs/core/http";
 import { Exception } from "@adonisjs/core/exceptions";
+import ResourceNotFoundException from "../errors/resource_not_found_exception.js";
+import { errors } from "@adonisjs/lucid";
 
 export default class HttpExceptionHandler extends ExceptionHandler {
   /**
@@ -14,6 +16,10 @@ export default class HttpExceptionHandler extends ExceptionHandler {
    * response to the client
    */
   async handle(error: unknown, ctx: HttpContext) {
+    if (error instanceof errors.E_ROW_NOT_FOUND) {
+      error = new ResourceNotFoundException("Resource");
+    }
+
     if (error instanceof Exception) {
       return ctx.response.status(error.status).send({
         code: error.code,

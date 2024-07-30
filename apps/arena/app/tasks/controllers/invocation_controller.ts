@@ -8,8 +8,8 @@ export default class InvocationController {
   public constructor(private invocationService: InvocationService) {}
 
   public async store(ctx: HttpContext) {
+    const user = ctx.auth.use("web").getUserOrFail();
     const payload = await ctx.request.validateUsing(createInvocationValidator);
-    const user = ctx.auth.user!;
 
     const invocation = await this.invocationService.create(user, payload);
 

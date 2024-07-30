@@ -1,4 +1,4 @@
-import { defineConfig } from "@adonisjs/core/app";
+import { defineConfig } from "@adonisjs/core/app"
 
 export default defineConfig({
   /*
@@ -40,6 +40,7 @@ export default defineConfig({
     () => import("@adonisjs/core/providers/edge_provider"),
     () => import("#app/core/providers/socket_provider"),
     () => import("@adonisjs/redis/redis_provider"),
+    () => import('@adonisjs/lock/lock_provider')
   ],
 
   /*
@@ -86,4 +87,4 @@ export default defineConfig({
       reloadServer: false,
     },
   ],
-});
+})

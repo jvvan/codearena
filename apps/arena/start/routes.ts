@@ -14,6 +14,7 @@ import RunnersController from "#app/runners/controllers/runners_controller";
 import IndexController from "#app/core/controllers/index_controller";
 import LanguagesController from "#app/tasks/controllers/languages_controller";
 import InvocationController from "#app/tasks/controllers/invocation_controller";
+import TaskController from "#app/tasks/controllers/tasks_controller";
 
 router.get("/api/auth/me", [AuthController, "me"]);
 router.post("/api/auth/register", [AuthController, "register"]);
@@ -37,7 +38,19 @@ router
   })
   .middleware(middleware.auth());
 
-router.get("/api/*", async ({ request }) => {
+router
+  .group(() => {
+    router.get("/api/tasks/poll", [TaskController, "poll"]);
+    router.get("/api/tasks/:taskId", [TaskController, "show"]);
+    router.post("/api/tasks/:taskId/take", [TaskController, "take"]);
+  })
+  .middleware(
+    middleware.auth({
+      guards: ["runner"],
+    })
+  );
+
+router.any("/api/*", async ({ request }) => {
   return {
     message: "Route Not Found",
     method: request.method(),

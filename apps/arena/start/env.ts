@@ -9,7 +9,7 @@
 |
 */
 
-import { Env } from "@adonisjs/core/env";
+import { Env } from "@adonisjs/core/env"
 
 export default await Env.create(new URL("../", import.meta.url), {
   NODE_ENV: Env.schema.enum(["development", "production", "test"] as const),
@@ -55,4 +55,11 @@ export default await Env.create(new URL("../", import.meta.url), {
   DRIVE_S3_ACCESS_KEY_ID: Env.schema.string(),
   DRIVE_S3_SECRET_ACCESS_KEY: Env.schema.string(),
   DRIVE_S3_FORCE_PATH_STYLE: Env.schema.boolean(),
-});
+
+  /*
+  |----------------------------------------------------------
+  | Variables for configuring the lock package
+  |----------------------------------------------------------
+  */
+  LOCK_STORE: Env.schema.enum(['redis', 'memory'] as const)
+})

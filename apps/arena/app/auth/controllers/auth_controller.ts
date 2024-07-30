@@ -11,7 +11,7 @@ export default class AuthController {
   public constructor(private authService: AuthService) {}
 
   public async me({ auth }: HttpContext) {
-    await auth.authenticate();
+    await auth.use("web").authenticate();
     return auth.use("web").getUserOrFail();
   }
 
@@ -42,8 +42,8 @@ export default class AuthController {
   }
 
   public async socketToken({ auth }: HttpContext) {
-    await auth.authenticate();
-    const user = await auth.getUserOrFail();
+    await auth.use("web").authenticate();
+    const user = await auth.use("web").getUserOrFail();
 
     const token = await this.authService.createSocketToken(user);
 
