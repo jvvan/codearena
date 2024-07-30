@@ -6,6 +6,13 @@ export default class extends BaseSchema {
   async up() {
     this.schema.createTable(this.tableName, (table) => {
       table.string("id").primary();
+      table
+        .integer("user_id")
+        .unsigned()
+        .references("id")
+        .inTable("users")
+        .onDelete("CASCADE");
+      table.smallint("status").notNullable();
       table.text("code").notNullable();
       table.string("language_id").notNullable().references("languages.id");
 

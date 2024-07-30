@@ -1,9 +1,8 @@
-import { DateTime } from "luxon";
-import { BaseModel, column, hasOne } from "@adonisjs/lucid/orm";
-import User from "#app/auth/models/user";
-import type { HasOne } from "@adonisjs/lucid/types/relations";
-import { TaskStatus, TaskType } from "../types/task.js";
 import Runner from "#app/runners/models/runner";
+import { BaseModel, column, hasOne } from "@adonisjs/lucid/orm";
+import type { HasOne } from "@adonisjs/lucid/types/relations";
+import { DateTime } from "luxon";
+import { TaskStatus, TaskType } from "../types/task.js";
 
 export default class Task extends BaseModel {
   @column({ isPrimary: true })
@@ -16,16 +15,7 @@ export default class Task extends BaseModel {
   declare status: TaskStatus;
 
   @column()
-  declare info: string;
-
-  @column()
-  declare userId: number | null;
-
-  @column()
   declare runnerId: number | null;
-
-  @hasOne(() => User)
-  declare user: HasOne<typeof User>;
 
   @hasOne(() => Runner)
   declare runner: HasOne<typeof Runner>;

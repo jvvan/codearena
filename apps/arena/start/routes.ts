@@ -13,6 +13,7 @@ import AuthController from "#app/auth/controllers/auth_controller";
 import RunnersController from "#app/runners/controllers/runners_controller";
 import IndexController from "#app/core/controllers/index_controller";
 import LanguagesController from "#app/tasks/controllers/languages_controller";
+import InvocationController from "#app/tasks/controllers/invocation_controller";
 
 router.get("/api/auth/me", [AuthController, "me"]);
 router.post("/api/auth/register", [AuthController, "register"]);
@@ -29,6 +30,12 @@ router
   .middleware(middleware.auth());
 
 router.get("/api/languages", [LanguagesController, "index"]);
+
+router
+  .group(() => {
+    router.post("/api/invocations", [InvocationController, "store"]);
+  })
+  .middleware(middleware.auth());
 
 router.get("/api/*", async ({ request }) => {
   return {

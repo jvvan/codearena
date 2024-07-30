@@ -8,13 +8,7 @@ export default class extends BaseSchema {
       table.string("id").primary();
       table.smallint("type").notNullable();
       table.smallint("status").notNullable();
-      table.string("info").notNullable();
 
-      table
-        .integer("user_id")
-        .unsigned()
-        .references("users.id")
-        .onDelete("SET NULL");
       table
         .integer("runner_id")
         .unsigned()

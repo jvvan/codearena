@@ -5,6 +5,7 @@ import { compose } from "@adonisjs/core/helpers";
 import { BaseModel, column, hasMany } from "@adonisjs/lucid/orm";
 import type { HasMany } from "@adonisjs/lucid/types/relations";
 import Runner from "#app/runners/models/runner";
+import Invocation from "#app/tasks/models/invocation";
 
 const AuthFinder = withAuthFinder(() => hash.use("scrypt"), {
   uids: ["username", "email"],
@@ -34,5 +35,8 @@ export default class User extends compose(BaseModel, AuthFinder) {
   declare updatedAt: DateTime | null;
 
   @hasMany(() => Runner)
-  declare Runner: HasMany<typeof Runner>;
+  declare runner: HasMany<typeof Runner>;
+
+  @hasMany(() => Invocation)
+  declare invocations: HasMany<typeof Invocation>;
 }

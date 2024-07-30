@@ -9,7 +9,7 @@ export default class extends BaseSchema {
       table.string("name").notNullable();
       table.string("description").notNullable();
       table.string("extension").notNullable();
-      table.string("compile_command").notNullable();
+      table.string("command").notNullable();
 
       table.timestamp("created_at");
       table.timestamp("updated_at");

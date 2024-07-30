@@ -15,7 +15,7 @@ export default class Language extends BaseModel {
   declare extension: string;
 
   @column()
-  declare compileCommand: string;
+  declare command: string;
 
   @column.dateTime({ autoCreate: true })
   declare createdAt: DateTime;
