@@ -1,10 +1,7 @@
 name: CI
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
+  workflow_dispatch:
 
 permissions:
   actions: read
@@ -33,5 +30,5 @@ jobs:
       - run: pnpm install --frozen-lockfile
       - uses: nrwl/nx-set-shas@v4
 
-      # - run: pnpm exec nx-cloud record -- nx format:check
+      - run: pnpm exec nx-cloud record -- nx format:check
       - run: pnpm exec nx affected -t lint build
